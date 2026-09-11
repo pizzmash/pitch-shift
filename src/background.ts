@@ -15,7 +15,8 @@ async function handle(request: Request) {
   const own = state.tabId === request.tabId;
   if (request.action === 'pitch' && state.tabId !== null && !own) throw new Error('別のタブでキーを変更中です。そのタブでキーを0に戻してからお試しください。');
   // Confirm that a playable video exists before acquiring audio.
-  const [result] = await chrome.scripting.executeScript({ target: { tabId: request.tabId }, func: controlVideo, args: [request.action === 'pitch' ? 'status' : request.action, request.value] });
+  // executeScript args must be JSON-serializable; status/reset omit value.
+  const [result] = await chrome.scripting.executeScript({ target: { tabId: request.tabId }, func: controlVideo, args: [request.action === 'pitch' ? 'status' : request.action, request.value ?? 0] });
   if (!result?.result) throw new Error('動画に接続できませんでした。ページを再読み込みしてください。');
   if (request.action === 'pitch') {
     const pitch = Math.round(Math.min(12, Math.max(-12, request.value!)));

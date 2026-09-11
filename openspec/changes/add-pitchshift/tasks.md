@@ -13,3 +13,7 @@
 - [x] 3.2 Validate OpenSpec and production build
 - [x] 3.3 Write installation and manual listening checklist
 - [x] 3.4 Commit implementation on feature branch
+
+## 4. Startup regression fix
+- [x] 4.1 Reproduce the reported unserializable argument error using the real Chrome scripting API
+- [x] 4.2 Supply a serializable default for status/reset and verify both against a video fixture

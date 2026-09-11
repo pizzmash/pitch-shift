@@ -31,3 +31,7 @@ The extension SHALL provide Japanese labels, keyboard-accessible buttons, curren
 #### Scenario: Reset practice
 - **WHEN** the user resets controls
 - **THEN** speed returns to 1 and pitch returns to 0
+
+#### Scenario: Initialize and reset without a numeric argument
+- **WHEN** the popup requests video status or resets practice without providing a value
+- **THEN** all injected script arguments are JSON-serializable and the request succeeds

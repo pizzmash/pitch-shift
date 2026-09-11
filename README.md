@@ -41,7 +41,7 @@ npm run spec:validate
 
 - 12件の単体テスト: 44.1/48kHzの音声変換、ステレオ一致、出力範囲、速度・シーク境界、対象URL。
 - ブラウザUIテスト: Chrome APIのテストダブルでボタン操作、入力上限、リセット、非対応ページ、失敗時の表示、ポップアップサイズ。
-- 実拡張スモークテスト: MV3読み込み、service worker / offscreen通信、実AudioWorkletによる合成音の変換。
+- 実拡張スモークテスト: MV3読み込み、service worker / offscreen通信、実AudioWorkletによる合成音の変換、実scripting APIでの初期状態取得・速度変更・リセット。動画ページはローカルのテスト用HTMLに置き換え、テスト用コピーにのみホスト権限を追加します。
 - OpenSpecのstrict検証、TypeScript型チェック、本番ビルド。
 
 実際のYouTube上でのタブキャプチャと聴感は未確認です。手動確認項目は [docs/manual-test.md](docs/manual-test.md) にあります。
