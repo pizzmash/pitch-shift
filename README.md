@@ -19,10 +19,10 @@ YouTubeでカラオケ練習をするためのChrome拡張です。キーと再�
 
 必要なものは **Chrome 116以降**、ビルド用の **Node.js 20.6以降とnpm**、ソース取得用の **Git** です。Chromeにフォルダを読み込んで使います。
 
-1. ターミナルでソースを取得し、ビルドします。現在の実装は `feat/pitchshift-extension` ブランチにあります。
+1. ターミナルでソースを取得し、ビルドします。
 
    ```sh
-   git clone --branch feat/pitchshift-extension https://github.com/pizzmash/pitch-shift.git
+   git clone https://github.com/pizzmash/pitch-shift.git
    cd pitch-shift
    npm ci
    npm run build
@@ -32,8 +32,6 @@ YouTubeでカラオケ練習をするためのChrome拡張です。キーと再�
 3. 右上の「デベロッパーモード」を有効にします。
 4. 「パッケージ化されていない拡張機能を読み込む」を押し、生成された **dist** フォルダを選びます。リポジトリ全体ではなく、`manifest.json` が入っているフォルダを選択してください。
 5. Chromeの拡張機能メニューからPitchShiftをツールバーに固定します。
-
-WSLでビルドしてWindowsのChromeから使う場合は、`dist` フォルダをWindows側へコピーして読み込むこともできます。読み込んだフォルダは利用中に削除しないでください。
 
 ## 使い方
 
