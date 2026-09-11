@@ -1,0 +1,1 @@
+{"manifest_version":3,"name":"PitchShift","version":"1.0.0","description":"YouTubeを、あなたの歌いやすいキーとテンポに。カラオケ練習用のピッチ・速度・巻き戻しコントローラー。","minimum_chrome_version":"116","permissions":["activeTab","scripting","tabCapture","offscreen","storage"],"action":{"default_popup":"popup.html","default_title":"PitchShift"},"background":{"service_worker":"background.js","type":"module"}}
