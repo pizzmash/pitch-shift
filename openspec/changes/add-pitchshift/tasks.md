@@ -17,3 +17,7 @@
 ## 4. Startup regression fix
 - [x] 4.1 Reproduce the reported unserializable argument error using the real Chrome scripting API
 - [x] 4.2 Supply a serializable default for status/reset and verify both against a video fixture
+
+## 5. Minimal UI copy
+- [x] 5.1 Remove decorative copy and redundant subtitles while keeping operational feedback
+- [x] 5.2 Rebuild the extension and refresh the browser-verified popup screenshot

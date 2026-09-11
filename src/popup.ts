@@ -24,7 +24,7 @@ async function run(action: Action, value?: number) {
     const reply: Reply = await chrome.runtime.sendMessage({ target: 'background', action, value, tabId });
     if (!reply?.ok || !reply.state) throw new Error(reply?.error || '接続できませんでした。拡張を開き直してください。');
     state = reply.state; ready = true;
-    notice(action === 'rewind' ? `${seconds}秒巻き戻しました。` : state.pitch === 0 ? '準備OK。歌いやすいキーに合わせましょう。' : 'キー変更中 · パネルを閉じても練習を続けられます。');
+    notice(action === 'rewind' ? `${seconds}秒巻き戻しました。` : '');
   } catch (error) { notice(error instanceof Error ? error.message : String(error), true); }
   finally { busy = false; render(); }
 }

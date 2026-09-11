@@ -35,3 +35,8 @@ The extension SHALL provide Japanese labels, keyboard-accessible buttons, curren
 #### Scenario: Initialize and reset without a numeric argument
 - **WHEN** the popup requests video status or resets practice without providing a value
 - **THEN** all injected script arguments are JSON-serializable and the request succeeds
+
+#### Scenario: Minimal functional copy
+- **WHEN** the popup is ready or pitch adjustment succeeds
+- **THEN** the popup shows functional labels and values without slogans, decorative English subtitles, a practice-mode badge, or an informational footer
+- **AND** loading, rewind feedback and actionable errors remain available
