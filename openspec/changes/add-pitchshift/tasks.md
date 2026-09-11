@@ -21,3 +21,7 @@
 ## 5. Minimal UI copy
 - [x] 5.1 Remove decorative copy and redundant subtitles while keeping operational feedback
 - [x] 5.2 Rebuild the extension and refresh the browser-verified popup screenshot
+
+## 6. First-time user documentation
+- [x] 6.1 Regenerate the popup image with verified Japanese fonts and guard future screenshot updates
+- [x] 6.2 Rewrite README around installation, controls, updates and troubleshooting; move developer details to a separate guide

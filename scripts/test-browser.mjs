@@ -30,7 +30,22 @@ try {
  await page.locator('#reset').click();
  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= 370), true);
  console.log('Popup height:', await page.evaluate(() => document.body.scrollHeight));
- await mkdir('docs', { recursive: true }); await page.screenshot({ path: 'docs/popup.png', fullPage: true });
+ // Regenerate documentation only on request, with verified Japanese glyphs.
+ if (process.env.UPDATE_SCREENSHOT === '1') {
+   await page.evaluate(() => document.fonts.ready);
+   const session = await page.context().newCDPSession(page);
+   await session.send('DOM.enable');
+   await session.send('CSS.enable');
+   const { root } = await session.send('DOM.getDocument');
+   const { nodeId } = await session.send('DOM.querySelector', { nodeId: root.nodeId, selector: '.rewind-card h2' });
+   const { fonts } = await session.send('CSS.getPlatformFontsForNode', { nodeId });
+   assert.ok(fonts.some(font => font.glyphCount > 0 && /Noto.*(CJK|JP)|Yu Gothic|Meiryo|Hiragino|IPA|Takao/i.test(font.familyName)),
+     `Install a Japanese font before updating the screenshot. Rendered fonts: ${JSON.stringify(fonts)}`);
+   await mkdir('docs', { recursive: true });
+   await page.mouse.move(0, 0);
+   await page.locator('main').screenshot({ path: 'docs/popup.png' });
+   await session.detach();
+ }
  const unsupported = await browser.newPage();
  await unsupported.addInitScript(() => { window.chrome = {storage:{local:{get:async()=>({})}},tabs:{query:async()=>[{id:1,url:'https://example.com'}]}}; });
  await unsupported.goto(`http://127.0.0.1:${server.address().port}`);
